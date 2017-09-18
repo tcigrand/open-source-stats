@@ -10,7 +10,7 @@ const app = new Koa();
 
 app.use(bodyParser());
 
-app.use(async (ctx, next) => {  
+app.use(async (ctx, next) => {
     try {
         await next();
     }
@@ -25,17 +25,17 @@ app.use(serve(__dirname + '/www'));
 
 const router = new Router();
 
-router.get('/api/project/:id', async (ctx) => {  
-    const projectStats = await projectStatsDB.byProjectId(ctx.params.id); 
+router.get('/api/project/:id', async (ctx) => {
+    const projectStats = await projectStatsDB.byProjectId(ctx.params.id);
     ctx.body = projectStats;
 });
 
-router.get('/api/projects', async (ctx) => { 
-    const allProjects = await projectsDB.getAll(); 
+router.get('/api/projects', async (ctx) => {
+    const allProjects = await projectsDB.getAll();
     ctx.body = allProjects;
 });
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(3000);  
-console.log('running on port 3000');
+app.listen(process.env.PORT || 3000);
+console.log('running')
