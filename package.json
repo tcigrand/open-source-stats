@@ -1,4 +1,7 @@
 {
+  "scripts": {
+    "start": "node app.js"
+  },
   "dependencies": {
     "knex": "^0.13.0",
     "koa": "^2.3.0",
